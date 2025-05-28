@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-start justify-center px-4 py-8">
+    <div class="h-full bg-gray-100 dark:bg-gray-900 flex items-start justify-center px-4 py-8">
       <div class="w-full max-w-md bg-white dark:bg-gray-800 p-6 rounded shadow font-sans">
         <h1 class="text-2xl font-bold mb-4 text-center text-gray-800 dark:text-white">My Todo List</h1>
   
@@ -40,27 +40,30 @@
           </button>
         </div>
   
-        <ul>
-          <li
-            v-for="(todo, index) in filteredTodos"
-            :key="index"
-            class="mb-2 flex justify-between items-center"
-          >
-            <span
-              :class="{ 'line-through text-gray-500': todo.completed }"
-              class="cursor-pointer"
-              @click="toggleComplete(index)"
-            >
-              {{ todo.text }}
-            </span>
-            <button
-              @click="removeTodo(index)"
-              class="text-red-500 hover:text-red-700 text-base transition-all duration-200 transform hover:scale-125"
-            >
-              <font-awesome-icon :icon="['fas', 'trash']" />
-            </button>
-          </li>
-        </ul>
+        <div class="overflow-y-auto max-h-[50vh] mb-4 pr-1">
+            <ul>
+                <li
+                v-for="(todo, index) in filteredTodos"
+                :key="index"
+                class="mb-2 flex justify-between items-center"
+                >
+                <span
+                    :class="{ 'line-through text-gray-500': todo.completed }"
+                    class="cursor-pointer"
+                    @click="toggleComplete(index)"
+                >
+                    {{ todo.text }}
+                </span>
+                <button
+                    @click="removeTodo(index)"
+                    class="text-red-500 hover:text-red-700 text-base transition-all duration-200 transform hover:scale-125"
+                >
+                    <font-awesome-icon :icon="['fas', 'trash']" />
+                </button>
+                </li>
+            </ul>
+        </div>
+
       </div>
     </div>
   </template>
